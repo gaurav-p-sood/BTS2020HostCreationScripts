@@ -1,4 +1,4 @@
-# BTS2020HostScrips
+# BTS2020HostScripts
 Contains Host Creation Script for BTS 2020 
 
 <# 
