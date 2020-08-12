@@ -1,0 +1,328 @@
+<configuration>
+	<Region Name="DEV">
+		<Servers>
+			<Receive>
+				<Server>HostSpecificServerAddress</Server>
+				<!-- <Server>HostSpecificServerAddress</Server> -->
+			</Receive>
+			<Send>
+				<Server>HostSpecificServerAddress</Server>
+				<!-- <Server>HostSpecificServerAddress</Server> -->
+			</Send>
+			<Process>
+				<Server>HostSpecificServerAddress</Server>
+				<!-- <Server>HostSpecificServerAddress</Server> -->
+			</Process>
+		</Servers>
+		<Hosts>
+			<Host>
+				<HostName>DEVPS_ProcessHost_TEST</HostName>
+				<HostType>1</HostType>
+				<NtGroupName>Domain\BizTalkAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>true</tracking>
+				<isolated>false</isolated>
+				<trusted>false</trusted>
+			</Host>
+			<Host>
+				<HostName>DEVPS_RecevieHost_TEST</HostName>
+				<HostType>1</HostType>
+				<NtGroupName>Domain\BizTalkAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>true</tracking>
+				<isolated>false</isolated>
+				<trusted>false</trusted>
+			</Host>
+			<Host>
+				<HostName>DEVPS_SendHost_TEST</HostName>
+				<HostType>1</HostType>
+				<NtGroupName>Domain\BizTalkAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>true</tracking>
+				<isolated>false</isolated>
+				<trusted>false</trusted>
+			</Host>
+			<Host>
+				<HostName>DEV_IsolatedHost</HostName>
+				<HostType>2</HostType>
+				<NtGroupName>Domain\BizTalkIsoAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>false</tracking>
+				<isolated>true</isolated>
+				<trusted>false</trusted>
+			</Host>
+		</Hosts>
+		<HostInstances>
+			<HostInstance>
+				<Host>DEVPS_SendHost_TEST</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>S</Type>
+			</HostInstance>
+			<HostInstance>
+				<Host>DEVPS_ProcessHost_TEST</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>P</Type>
+			</HostInstance>
+			<HostInstance>
+				<Host>DEVPS_RecevieHost_TEST</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>R</Type>
+			</HostInstance>   
+			<HostInstance>
+				<Host>DEV_IsolatedHost</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>R</Type>
+			</HostInstance>			
+			<!-- <HostInstance> -->
+			<!-- <Host>HostNamehere</Host> -->
+			<!-- <Login>LoginID</Login> -->
+			<!-- <Password>password</Password> -->
+			<!-- <Type>R</Type> -->
+			<!-- </HostInstance> -->
+		</HostInstances>
+		<Handlers>      
+			<Handler>
+				<Adapter>FILE</Adapter>
+				<HostName>DEVPS_RecevieHost_TEST</HostName>
+				<Type>Receive</Type>
+			</Handler>
+			<Handler>
+				<Adapter>WCF-SQL</Adapter>
+				<HostName>DEVPS_SendHost_TEST</HostName>
+				<Type>Send</Type>
+			</Handler>   
+			<Handler>
+				<Adapter>FILE</Adapter>
+				<HostName>DEVPS_SendHost_TEST</HostName>
+				<Type>Send</Type>
+				<Handler>
+					<Adapter>WCF-BasicHttp</Adapter>
+					<HostName>DEV_IsolatedHost</HostName>
+					<Type>Receive</Type>
+				</Handler>
+			</Handler>
+		</Handlers>
+	</Region>  
+
+	<Region Name="TEST">
+		<Servers>
+			<Receive>
+				<Server>HostSpecificServerAddress</Server>
+				<!-- <Server>HostSpecificServerAddress</Server> -->
+			</Receive>
+			<Send>
+				<Server>HostSpecificServerAddress</Server>
+				<!-- <Server>HostSpecificServerAddress</Server> -->
+			</Send>
+			<Process>
+				<Server>HostSpecificServerAddress</Server>
+				<!-- <Server>HostSpecificServerAddress</Server> -->
+			</Process>
+		</Servers>
+		<Hosts>
+			<Host>
+				<HostName>DEVPS_ProcessHost_TEST</HostName>
+				<HostType>1</HostType>
+				<NtGroupName>Domain\BizTalkAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>true</tracking>
+				<isolated>false</isolated>
+				<trusted>false</trusted>
+			</Host>
+			<Host>
+				<HostName>DEVPS_RecevieHost_TEST</HostName>
+				<HostType>1</HostType>
+				<NtGroupName>Domain\BizTalkAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>true</tracking>
+				<isolated>false</isolated>
+				<trusted>false</trusted>
+			</Host>
+			<Host>
+				<HostName>DEVPS_SendHost_TEST</HostName>
+				<HostType>1</HostType>
+				<NtGroupName>Domain\BizTalkAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>true</tracking>
+				<isolated>false</isolated>
+				<trusted>false</trusted>
+			</Host>
+			<Host>
+				<HostName>DEV_IsolatedHost</HostName>
+				<HostType>2</HostType>
+				<NtGroupName>Domain\BizTalkIsoAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>false</tracking>
+				<isolated>true</isolated>
+				<trusted>false</trusted>
+			</Host>
+		</Hosts>
+		<HostInstances>
+			<HostInstance>
+				<Host>DEVPS_SendHost_TEST</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>S</Type>
+			</HostInstance>
+			<HostInstance>
+				<Host>DEVPS_ProcessHost_TEST</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>P</Type>
+			</HostInstance>
+			<HostInstance>
+				<Host>DEVPS_RecevieHost_TEST</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>R</Type>
+			</HostInstance>   
+			<HostInstance>
+				<Host>DEV_IsolatedHost</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>R</Type>
+			</HostInstance>			
+			<!-- <HostInstance> -->
+			<!-- <Host>HostNamehere</Host> -->
+			<!-- <Login>LoginID</Login> -->
+			<!-- <Password>password</Password> -->
+			<!-- <Type>R</Type> -->
+			<!-- </HostInstance> -->
+		</HostInstances>
+		<Handlers>      
+			<Handler>
+				<Adapter>FILE</Adapter>
+				<HostName>DEVPS_RecevieHost_TEST</HostName>
+				<Type>Receive</Type>
+			</Handler>
+			<Handler>
+				<Adapter>WCF-SQL</Adapter>
+				<HostName>DEVPS_SendHost_TEST</HostName>
+				<Type>Send</Type>
+			</Handler>   
+			<Handler>
+				<Adapter>FILE</Adapter>
+				<HostName>DEVPS_SendHost_TEST</HostName>
+				<Type>Send</Type>
+				<Handler>
+					<Adapter>WCF-BasicHttp</Adapter>
+					<HostName>DEV_IsolatedHost</HostName>
+					<Type>Receive</Type>
+				</Handler>
+			</Handler>
+		</Handlers>
+	</Region> 
+
+	<Region Name="PROD">
+		<Servers>
+			<Receive>
+				<Server>HostSpecificServerAddress</Server>
+				<!-- <Server>HostSpecificServerAddress</Server> -->
+			</Receive>
+			<Send>
+				<Server>HostSpecificServerAddress</Server>
+				<!-- <Server>HostSpecificServerAddress</Server> -->
+			</Send>
+			<Process>
+				<Server>HostSpecificServerAddress</Server>
+				<!-- <Server>HostSpecificServerAddress</Server> -->
+			</Process>
+		</Servers>
+		<Hosts>
+			<Host>
+				<HostName>DEVPS_ProcessHost_TEST</HostName>
+				<HostType>1</HostType>
+				<NtGroupName>Domain\BizTalkAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>true</tracking>
+				<isolated>false</isolated>
+				<trusted>false</trusted>
+			</Host>
+			<Host>
+				<HostName>DEVPS_RecevieHost_TEST</HostName>
+				<HostType>1</HostType>
+				<NtGroupName>Domain\BizTalkAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>true</tracking>
+				<isolated>false</isolated>
+				<trusted>false</trusted>
+			</Host>
+			<Host>
+				<HostName>DEVPS_SendHost_TEST</HostName>
+				<HostType>1</HostType>
+				<NtGroupName>Domain\BizTalkAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>true</tracking>
+				<isolated>false</isolated>
+				<trusted>false</trusted>
+			</Host>
+			<Host>
+				<HostName>DEV_IsolatedHost</HostName>
+				<HostType>2</HostType>
+				<NtGroupName>Domain\BizTalkIsoAppUsersGroup</NtGroupName>
+				<Is32Bit>false</Is32Bit>
+				<tracking>false</tracking>
+				<isolated>true</isolated>
+				<trusted>false</trusted>
+			</Host>
+		</Hosts>
+		<HostInstances>
+			<HostInstance>
+				<Host>DEVPS_SendHost_TEST</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>S</Type>
+			</HostInstance>
+			<HostInstance>
+				<Host>DEVPS_ProcessHost_TEST</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>P</Type>
+			</HostInstance>
+			<HostInstance>
+				<Host>DEVPS_RecevieHost_TEST</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>R</Type>
+			</HostInstance>   
+			<HostInstance>
+				<Host>DEV_IsolatedHost</Host>
+				<Login>Domain\UserAccount</Login>
+				<Password>Password</Password>
+				<Type>R</Type>
+			</HostInstance>			
+			<!-- <HostInstance> -->
+			<!-- <Host>HostNamehere</Host> -->
+			<!-- <Login>LoginID</Login> -->
+			<!-- <Password>password</Password> -->
+			<!-- <Type>R</Type> -->
+			<!-- </HostInstance> -->
+		</HostInstances>
+		<Handlers>      
+			<Handler>
+				<Adapter>FILE</Adapter>
+				<HostName>DEVPS_RecevieHost_TEST</HostName>
+				<Type>Receive</Type>
+			</Handler>
+			<Handler>
+				<Adapter>WCF-SQL</Adapter>
+				<HostName>DEVPS_SendHost_TEST</HostName>
+				<Type>Send</Type>
+			</Handler>   
+			<Handler>
+				<Adapter>FILE</Adapter>
+				<HostName>DEVPS_SendHost_TEST</HostName>
+				<Type>Send</Type>
+				<Handler>
+					<Adapter>WCF-BasicHttp</Adapter>
+					<HostName>DEV_IsolatedHost</HostName>
+					<Type>Receive</Type>
+				</Handler>
+			</Handler>
+		</Handlers>
+	</Region> 
+</configuration>
