@@ -20,11 +20,11 @@ Contains Host Creation Script for BTS 2020
    If set, the Host Handler creation is skipped
      
 .EXAMPLE 
-    .\Add-HostInstanceHandlers.ps1 -ConfigFile .\ClientConfig.xml
+    .\Add-HostInstanceHandlers.ps1 -ConfigFile .\HostConfig_2020_Generic.xml
     Will create all hosts, host instances and handlers as defined in ClientConfig.xml
     
-    .\Add-HostInstanceHandlers.ps1 -ConfigFile .\ClientConfig.xml -SkipHosts -SkipHostInstances
-    Will just create the handlers as defined in ClientConfig.xml
+    .\Add-HostInstanceHandlers.ps1 -ConfigFile .\HostConfig_2020_Generic.xml -SkipHosts -SkipHostInstances
+    Will just create the handlers as defined in HostConfig_2020_Generic.xml
 #> 
 
 Special thanks to @sandroasp and @mattcorr , I used their code and bring up this scrips 
